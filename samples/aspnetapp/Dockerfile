@@ -1,11 +1,11 @@
 # Learn about building .NET container images:
 # https://github.com/dotnet/dotnet-docker/blob/main/samples/README.md
-FROM --platform=$BUILDPLATFORM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+FROM mcr.microsoft.com/dotnet/aspnet:8.0-nanoserver-1809 AS base
+WORKDIR /app
 EXPOSE 8080
 EXPOSE 8081
-WORKDIR /app
 
-FROM --platform=$BUILDPLATFORM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:8.0-nanoserver-1809 AS build
 ARG TARGETARCH
 WORKDIR /source
 
